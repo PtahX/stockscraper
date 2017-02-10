@@ -17,6 +17,22 @@ var config = require('./config');
  *	
  */
 
+/**
+*Criteria not LOOKING FOR BUT IMPORTANT.
+    1. Adequate size of the enterprise.
+    2. 2 to 1 current ratio. Long term Debt should not exceed NET Current assets.
+    3. Earnings stability (Some earnings in the past ten years).
+    4. Earnings Growth: A mininmum increase of 1/3 in per share earnings in the past wo years using three year averages at the begining and the end.
+    5. Uninteruppted payments for the past 20 years.
+    6. Moderate price to earnings ratio. Should not be more than 15 times.
+    7. Price to assests rations Not more than 22.5
+
+    Also check
+    NEWS
+    Trading Volume
+    3 month price.
+*/
+
 var EPSMULTIPLIER = 25;
 var  BOOKVALUEMULTIPLIER = 22.5;
 
