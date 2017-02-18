@@ -1,0 +1,32 @@
+name,industry,symbol,url,EPS,Divident,CurrentStockPrice,currentRatio,dividentYeild,totalCurrentAssets,totalCurrentLiabilities
+Bliss GVS Pharma Ltd.,PHARMA,BLISSGVS,http://www.moneycontrol.com/india/stockpricequote/miscellaneous/blissgvspharma/BGV,6.36,50,152.75,2.85,0.33%,372.57,130.83
+Coal India Ltd.,METALS,COALINDIA,http://www.moneycontrol.com/india/stockpricequote/miningminerals/coalindia/CI11,25.87,274,316.25,3.22,8.66%,6,1
+Engineers India Ltd.,CONSTRUCTION,ENGINERSIN,http://www.moneycontrol.com/india/stockpricequote/infrastructuregeneral/engineersindia/EI14,7.67,80,152.6,2.45,2.63%,3,1
+FDC Ltd.,PHARMA,FDC,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/fdc/FDC,8.82,225,211,3.03,1.07%,492,162.11
+Greaves Cotton Ltd.,INDUSTRIAL MANUFACTURING,GREAVESCOT,http://www.moneycontrol.com/india/stockpricequote/engines/greavescotton/GC20,8.14,275,153.2,2.89,3.58%,830.81,287.02
+Grindwell Norton Ltd.,INDUSTRIAL MANUFACTURING,GRINDWELL,http://www.moneycontrol.com/india/stockpricequote/abrasives/grindwellnorton/GN,18.34,130,330.65,2.15,1.97%,554.78,258.25
+Hindustan Zinc Ltd.,METALS,HINDZINC,http://www.moneycontrol.com/india/stockpricequote/metalsnonferrous/hindustanzinc/HZ,19.33,1,299.8,2.44,9.28%,37,15
+Infosys Ltd.,IT,INFY,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/infosys/IT,68.73,485,1000.1,2.97,2.43%,46,15
+Jai Corp Ltd.,INDUSTRIAL MANUFACTURING,JAICORPLTD,http://www.moneycontrol.com/india/stockpricequote/steelgpgcsheets/jaicorp/JC08,3.9,50,71.25,4.25,0.70%,223.91,52.68
+KPIT Technologies Ltd.,IT,KPIT,http://www.moneycontrol.com/india/stockpricequote/computerssoftwaremediumsmall/kpittechnologies/KPI02,10.75,110,131.65,2.76,1.67%,758.45,274.98
+Lupin Ltd.,PHARMA,LUPIN,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/lupin/L,64.03,375,1458.7,3.15,0.51%,7,2
+Mayur Uniquoters Ltd.,TEXTILES,MAYURUNIQ,http://www.moneycontrol.com/india/stockpricequote/plastics/mayuruniquoters/MU,17.19,70,370.2,3.52,0.95%,296.82,84.27
+NLC India Ltd.,ENERGY,NLCINDIA,http://www.moneycontrol.com/india/stockpricequote/powergenerationdistribution/nlcindia/NLC,7.18,30,93.35,3.42,3.22%,8,2
+NMDC Ltd.,METALS,NMDC,http://www.moneycontrol.com/india/stockpricequote/miningminerals/nmdc/NMD02,7.64,1,136.2,6.34,8.07%,19,3
+National Aluminium Co. Ltd.,METALS,NATIONALUM,http://www.moneycontrol.com/india/stockpricequote/aluminium/nationalaluminiumcompany/NAC,2.84,40,64.5,3.25,3.11%,7,2
+Nilkamal Ltd.,INDUSTRIAL MANUFACTURING,NILKAMAL,http://www.moneycontrol.com/india/stockpricequote/plastics/nilkamal/NP08,69.62,70,1684.8,2.07,0.41%,598.86,288.86
+Oil India Ltd.,ENERGY,OIL,http://www.moneycontrol.com/india/stockpricequote/oildrillingandexploration/oilindia/OI13,38.76,160,333.4,5.06,4.79%,14,2
+Shriram City Union Finance Ltd.,FINANCIAL SERVICES,SHRIRAMCIT,http://www.moneycontrol.com/india/stockpricequote/financeleasinghirepurchase/shriramcityunionfinance/SCU,80.36,150,1901.3,2.19,0.79%,14,6
+Sonata Software Ltd.,IT,SONATSOFTW,http://www.moneycontrol.com/india/stockpricequote/computerssoftwaremediumsmall/sonatasoftware/SS42,11.17,900,189.35,2.74,4.76%,413.09,150.51
+Suven Life Sciences Ltd.,PHARMA,SUVEN,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/suvenlifesciences/SLS01,7.46,200,176.35,4.48,1.14%,466.68,104.22
+TV Today Network Ltd.,MEDIA & ENTERTAINMENT,TVTODAY,http://www.moneycontrol.com/india/stockpricequote/mediaentertainment/tvtodaynetwork/TVT,15.81,35,265.75,2.95,0.66%,370.78,125.81
+Tata Coffee Ltd.,CONSUMER GOODS,TATACOFFEE,http://www.moneycontrol.com/india/stockpricequote/plantationsteacoffee/tatacoffee/TC14,5.49,130,121.4,2.05,1.07%,474.79,231.95
+Tata Consultancy Services Ltd.,IT,TCS,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/tataconsultancyservices/TCS,116.13,4,2407.9,3.01,1.81%,53,17
+Tech Mahindra Ltd.,IT,TECHM,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/techmahindra/TM4,33.27,240,503.5,2.29,2.39%,12,5
+Torrent Pharmaceuticals Ltd.,PHARMA,TORNTPHARM,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/torrentpharmaceuticals/TP06,104.2,700,1260.65,2.07,2.77%,3,1
+Torrent Power Ltd.,ENERGY,TORNTPOWER,http://www.moneycontrol.com/india/stockpricequote/powergenerationdistribution/torrentpower/TP14,16.98,45,206.55,2.12,2.18%,3,1
+Unichem Laboratories Ltd.,PHARMA,UNICHEMLAB,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/unichemlaboratories/UL02,11.07,100,267,2.37,0.75%,594.87,250.72
+V-Guard Industries Ltd.,INDUSTRIAL MANUFACTURING,VGUARD,http://www.moneycontrol.com/india/stockpricequote/miscellaneous/vguardindustries/VI02,37.12,70,213,2.49,0.33%,535.31,215.11
+Wipro Ltd.,IT,WIPRO,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/wipro/W,32.78,300,475.35,2.71,1.26%,45,16
+Zensar Technolgies Ltd.,IT,ZENSARTECH,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/zensartechnologies/ZT02,52.48,120,936,6.45,1.29%,953.55,147.82
+eClerx Services Ltd.,IT,ECLERX,http://www.moneycontrol.com/india/stockpricequote/computerssoftwaremediumsmall/eclerxservices/eS06,72.97,10,1372,6.83,0.07%,696.58,101.98
