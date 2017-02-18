@@ -18,10 +18,13 @@ var config = require('./config');
  */
 
 var EPSMULTIPLIER = 25;
-var  BOOKVALUEMULTIPLIER = 22;
+var  BOOKVALUEMULTIPLIER = 22.5;
 
 var companies = [];
 
+/**
+ * - code and programming the stuff is nice way to interact with
+ */
 
 function loadRatios($) {
 	var defer = q.defer();
@@ -48,9 +51,14 @@ function loadProfitAndLoss($) {
 	var profitAndLoss = $("a:contains('Profit & Loss')").attr('href');
 	console.log("Loading profit and loss");
 
+	//Flitering the url to load the old format
+	var url = config.moneyControlHome+profitAndLoss;
+	url = url.replace("VI/","/");
+
 	//Loading ratio
-	request(config.moneyControlHome+profitAndLoss, function(err, response, body) {
+	request(url, function(err, response, body) {
 		var $ = cheerio.load(body);
+
 		var earningPerShare =  parseFloat($("td:contains('Earning Per Share (Rs)')").next().text());
 		var bookValue =  parseFloat($("td:contains('Book Value (Rs)')").next().text());
 		var currentStockPrice = parseFloat($("#Nse_Prc_tick strong").text());
@@ -74,11 +82,11 @@ function loadProfitAndLoss($) {
 					console.log("Company is making profit for the past 5 years");
 
 					//Checking if the company has given divident in the past 5 years
-					var div1 = parseFloat($("td:contains('Earning Per Share (Rs)')").next().text());
-					var div2 = parseFloat($("td:contains('Earning Per Share (Rs)')").next().next().text());
-					var div3 = parseFloat($("td:contains('Earning Per Share (Rs)')").next().next().next().text());
-					var div4 = parseFloat($("td:contains('Earning Per Share (Rs)')").next().next().next().next().text());
-					var div5 = parseFloat($("td:contains('Earning Per Share (Rs)')").next().next().next().next().next().text());
+					var div1 = parseFloat($("td:contains('Equity Dividend (%)')").next().text());
+					var div2 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().text());
+					var div3 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().text());
+					var div4 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().next().text());
+					var div5 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().next().next().text());
 
 					if(div1 > 0 && div2 > 0 && div3 > 0 && div4 > 0 && div5 > 0) {
 						console.log("Company is giving divident for the past 5 years");
@@ -144,7 +152,8 @@ function loadStock(symbol, name, industry) {
 					try {
 						dividentYeild = $($(".gL_10:contains('DIV YIELD.(%)')").next()[0]).text();						
 					} catch(ex) {
-
+						console.log("Error parsing divident yeild", ex);
+						divident = "N/A";
 					}
 
 					companies.push({
@@ -158,6 +167,8 @@ function loadStock(symbol, name, industry) {
 						currentRatio: data2.currentRatio,
 						dividentYeild: dividentYeild
 					});
+
+					console.log(companies);
 					return defer.resolve();
 				}, function() {
 					return defer.reject();
@@ -205,6 +216,7 @@ request({
 	}, function() {
 		console.log(companies);
 		var csv = babyParse.unparse(companies);
-		fs.writeFileSync("output.csv", csv);
+		var date = new Date();
+		fs.writeFileSync(date.getTime()+"-output.csv", csv);
 	});
 })
