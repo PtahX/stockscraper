@@ -1,0 +1,15 @@
+name,industry,symbol,url,EPS,Divident,CurrentStockPrice,currentRatio,dividentYeild,totalCurrentAssets,totalCurrentLiabilities,earningsGrowth,epsGrowth
+Coal India Ltd.,METALS,COALINDIA,http://www.moneycontrol.com/india/stockpricequote/miningminerals/coalindia/CI11,25.87,274,316.25,3.22,8.66%,6,1,100,101.63678877630554
+Hindustan Zinc Ltd.,METALS,HINDZINC,http://www.moneycontrol.com/india/stockpricequote/metalsnonferrous/hindustanzinc/HZ,19.33,1,299.8,2.44,9.28%,37,15,60,47.78287461773699
+KPIT Technologies Ltd.,IT,KPIT,http://www.moneycontrol.com/india/stockpricequote/computerssoftwaremediumsmall/kpittechnologies/KPI02,10.75,110,131.65,2.76,1.67%,758.45,274.98,170.4031070041516,143.37349397590359
+Lupin Ltd.,PHARMA,LUPIN,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/lupin/L,64.03,375,1458.7,3.15,0.51%,7,2,-99.75135820580081,255.1839464882943
+Nilkamal Ltd.,INDUSTRIAL MANUFACTURING,NILKAMAL,http://www.moneycontrol.com/india/stockpricequote/plastics/nilkamal/NP08,69.62,70,1684.8,2.07,0.41%,598.86,288.86,86.85251798561151,86.84916800858832
+Sonata Software Ltd.,IT,SONATSOFTW,http://www.moneycontrol.com/india/stockpricequote/computerssoftwaremediumsmall/sonatasoftware/SS42,11.17,900,189.35,2.74,4.76%,413.09,150.51,687.6592890677398,686.6197183098592
+Suven Life Sciences Ltd.,PHARMA,SUVEN,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/suvenlifesciences/SLS01,7.46,200,176.35,4.48,1.14%,466.68,104.22,561.3509749303621,506.50406504065046
+TV Today Network Ltd.,MEDIA & ENTERTAINMENT,TVTODAY,http://www.moneycontrol.com/india/stockpricequote/mediaentertainment/tvtodaynetwork/TVT,15.81,35,265.75,2.95,0.66%,370.78,125.81,796.3878326996198,793.2203389830509
+Tata Consultancy Services Ltd.,IT,TCS,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/tataconsultancyservices/TCS,116.13,4,2407.9,3.01,1.81%,53,17,120,107.56032171581768
+Torrent Pharmaceuticals Ltd.,PHARMA,TORNTPHARM,http://www.moneycontrol.com/india/stockpricequote/pharmaceuticals/torrentpharmaceuticals/TP06,104.2,700,1260.65,2.07,2.77%,3,1,-99.67871485943776,183.22913835281327
+V-Guard Industries Ltd.,INDUSTRIAL MANUFACTURING,VGUARD,http://www.moneycontrol.com/india/stockpricequote/miscellaneous/vguardindustries/VI02,37.12,70,213,2.49,0.33%,535.31,215.11,119.8425196850394,116.68625146886018
+Wipro Ltd.,IT,WIPRO,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/wipro/W,32.78,300,475.35,2.71,1.26%,45,16,100,72.39392352016762
+Zensar Technolgies Ltd.,IT,ZENSARTECH,http://www.moneycontrol.com/india/stockpricequote/computerssoftware/zensartechnologies/ZT02,52.48,120,936,6.45,1.29%,953.55,147.82,147.75251189846642,138.64157870582835
+eClerx Services Ltd.,IT,ECLERX,http://www.moneycontrol.com/india/stockpricequote/computerssoftwaremediumsmall/eclerxservices/eS06,72.97,10,1372,6.83,0.07%,696.58,101.98,89.1819741943685,37.27481793790724

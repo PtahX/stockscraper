@@ -5,7 +5,11 @@
             "name": "Launch",
             "type": "node",
             "request": "launch",
+<<<<<<< HEAD
+            "program": "${workspaceRoot}/technical.js",
+=======
             "program": "${workspaceRoot}/index.js",
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}",

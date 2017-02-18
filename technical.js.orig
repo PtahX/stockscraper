@@ -14,7 +14,11 @@ var async = require('async');
 var q = require('q');
 
 //Reading the csv
+<<<<<<< HEAD
+fs.readFile('./1486790115362-output.csv', 'utf8', function(err, file) {
+=======
 fs.readFile('./1486733986434-output.csv', 'utf8', function(err, file) {
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
     var parsed = babyParse.parse(file, { header: true }).data;
     var results = [];
     async.each(parsed, function(item, cb) {

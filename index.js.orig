@@ -34,7 +34,11 @@ var config = require('./config');
 */
 
 var EPSMULTIPLIER = 25;
+<<<<<<< HEAD
+var  BOOKVALUEMULTIPLIER = 22.5;
+=======
 var BOOKVALUEMULTIPLIER = 22.5;
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
 
 var companies = [];
 
@@ -131,6 +135,15 @@ function loadProfitAndLoss($) {
 	var url = config.moneyControlHome+profitAndLoss;
 	url = url.replace("VI/","/");
 
+<<<<<<< HEAD
+	//Loading ratio
+	request(url, function(err, response, body) {
+		var $ = cheerio.load(body);
+
+		var earningPerShare =  parseFloat($("td:contains('Earning Per Share (Rs)')").next().text());
+		var bookValue =  parseFloat($("td:contains('Book Value (Rs)')").next().text());
+		var currentStockPrice = parseFloat($("#Nse_Prc_tick strong").text());
+=======
 
 	request(url, function(err, response, body) {
 		if(err) {
@@ -143,6 +156,7 @@ function loadProfitAndLoss($) {
 		var earningPerShare =  parseFloat($("td:contains('Earning Per Share (Rs)')").next().text().replace(/,/g, ''));
 		var bookValue =  parseFloat($("td:contains('Book Value (Rs)')").next().text().replace(/,/g, ''));
 		var currentStockPrice = parseFloat($("#Nse_Prc_tick strong").text().replace(/,/g, ''));
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
 		
 		console.log(earningPerShare, bookValue, currentStockPrice);
 		
@@ -163,11 +177,19 @@ function loadProfitAndLoss($) {
 					console.log("Company is making profit for the past 5 years");
 
 					//Checking if the company has given divident in the past 5 years
+<<<<<<< HEAD
+					var div1 = parseFloat($("td:contains('Equity Dividend (%)')").next().text());
+					var div2 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().text());
+					var div3 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().text());
+					var div4 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().next().text());
+					var div5 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().next().next().text());
+=======
 					var div1 = parseFloat($("td:contains('Equity Dividend (%)')").next().text().replace(/,/g, ''));
 					var div2 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().text().replace(/,/g, ''));
 					var div3 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().text().replace(/,/g, ''));
 					var div4 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().next().text().replace(/,/g, ''));
 					var div5 = parseFloat($("td:contains('Equity Dividend (%)')").next().next().next().next().next().text().replace(/,/g, ''));
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
 
 					if(div1 > 0 && div2 > 0 && div3 > 0 && div4 > 0 && div5 > 0) {
 						console.log("Company is giving divident for the past 5 years");
@@ -250,6 +272,18 @@ function loadStock(symbol, name, industry) {
 			//var internalSymbol = url.split("#")[1];
 			//console.log(internalSymbol);
 
+<<<<<<< HEAD
+			loadProfitAndLoss($).then(function(data1) {
+					console.log("Pushing data 1");
+				loadRatios($).then(function(data2) {
+					console.log("Pushing data");
+					var dividentYeild;
+					try {
+						dividentYeild = $($(".gL_10:contains('DIV YIELD.(%)')").next()[0]).text();						
+					} catch(ex) {
+						console.log("Error parsing divident yeild", ex);
+						divident = "N/A";
+=======
 			async.parallel([
 				function(_cb) {
 					loadProfitAndLoss($).then(function(data1) {
@@ -328,13 +362,36 @@ function loadStock(symbol, name, industry) {
 						});	
 					} else {
 						defer.reject();
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
 					}
 				}
 	
 				console.log(companies);	
 				//delete $;	
 
+<<<<<<< HEAD
+					companies.push({
+						name: name,
+						industry: industry,
+						symbol: symbol,
+						url: data[0].link_src,
+						EPS: data1.eps,
+						Divident: data1.divident,
+						CurrentStockPrice: data1.currentStockPrice,
+						currentRatio: data2.currentRatio,
+						dividentYeild: dividentYeild
+					});
+
+					console.log(companies);
+					return defer.resolve();
+				}, function() {
+					return defer.reject();
+				});
+			}, function() {
+				return defer.reject();
+=======
 				return defer.resolve();				
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
 			});
 		});
 	});
@@ -381,6 +438,9 @@ request({
 		var csv = babyParse.unparse(companies);
 		var date = new Date();
 		fs.writeFileSync(date.getTime()+"-output.csv", csv);
+<<<<<<< HEAD
+=======
 		console.timeEnd("process");
+>>>>>>> dd2f019e97d1bebdda20477d9a30361a88ea5e8e
 	});
 })
