@@ -8,12 +8,20 @@ var domain = 'makemyapp.io';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 
+var EPSMULTIPLIER = 25;
+var BOOKVALUEMULTIPLIER = 22.5;
+
+
 app.get('/', function(req, res) {
-    res.send('<form action="/compute" method="get"> Email:<input type="email" name="email" /> <input type="submit" /></form>');
+    res.send('<form action="/compute" method="get"> Email:<input type="email" name="email" /> <br /> EPS multipler: <input type="text" value="25" name="eps" /> <input type="submit" /></form>');
 });
 
 app.get('/compute', function(req, res) {
     if(!req.query.email) return res.send("Please specify email");
+
+	if(req.query.eps) EPSMULTIPLIER = parseInt(req.query.eps);
+
+	console.log(EPSMULTIPLIER);
     compute(req.query.email);
     return res.send("Report will be emailed at " + req.query.email);
 });
@@ -57,8 +65,6 @@ var config = require('./config');
     3 month price.
 */
 
-var EPSMULTIPLIER = 25;
-var BOOKVALUEMULTIPLIER = 22.5;
 
 var companies = [];
 
