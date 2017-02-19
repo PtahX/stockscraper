@@ -414,7 +414,7 @@ function loadStock(symbol, name, industry) {
                     to: email,
                     subject: 'Your Stock Report is ready',
                     text: 'You stock report is attached in the email',
-                    attachment: fileName
+                    attachment: fs.readFileSync(fileName)
                 };
                 mailgun.messages().send(data, function (error, body) {
                     console.log(body);
