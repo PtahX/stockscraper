@@ -3,30 +3,19 @@ var app = express();
 var contentDisposition = require('content-disposition');
 app.listen(process.env.PORT  || 4000);
 
+var api_key = process.env.MAILGUN_API_KEY || 'key-c6980bbd5dcb17840cdcd4ec7fbb7de0';
+var domain = process.env.MAILGUN_DOMAIN ||  'app59ec30de45c64f77a21aa73713ec2399.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+ 
+
+app.get('/', function(req, res) {
+    res.send('<form action="/compute" method="get"> Email:<input type="email" name="email" /> <input type="submit" /></form>');
+});
+
 app.get('/compute', function(req, res) {
-        res.writeHead(200, {
-             'Content-Type': 'text/plain',
-             'Content-Disposition': contentDisposition('report.csv')
-        });
-
-        var columns = 
-            'Name,'+
-            'Industry,'+
-            'Symbol,'+
-            'URL,'+
-            'EPS,'+
-            'Dividend,'+
-            'Current Stock Price,'+
-            'Current Ratio,'+
-            'Dividend Yeild,'+
-            'Total Current Assets,'+
-            'Total Current Liabilities,'+
-            'Earnings Growth,'+
-            'EPS Growth,'+
-            '\n';
-
-            res.write(columns);
-            compute(res);
+    if(!req.query.email) return res.send("Please specify email");
+    compute(req.query.email);
+    return res.send("Report will be emailed at " + req.query.email);
 });
 
 /**
@@ -377,7 +366,7 @@ function loadStock(symbol, name, industry) {
 }
 
 
-    var compute = function(res) {
+    var compute = function(email) {
         console.time("process");        
         //Loading the index
         request({
@@ -408,35 +397,29 @@ function loadStock(symbol, name, industry) {
                 }
 
                 loadStock(item["Symbol"], item['Company Name'], item['Industry']).then(function() {
-                    var stockData = companies[companies.length-1];
-                    var row =   stockData.name + ',' +
-                                stockData.industry + ',' +
-                                stockData.symbol + ',' +
-                                stockData.url + ',' +
-                                stockData.EPS + ',' +
-                                stockData.Divident + ',' +
-                                stockData.CurrentStockPrice + ',' +
-                                stockData.currentRatio + ',' +
-                                stockData.dividentYeild + ',' +
-                                stockData.totalCurrentAssets + ',' +
-                                stockData.totalCurrentLiabilities + ',' +
-                                stockData.earningsGrowth + ',' +
-                                stockData.epsGrowth + '\n'
-
-                    res.write(
-                        row
-                    )
                     cb();
                 }, function(err) {
                     if(err) throw err;
                     cb();
                 })
             }, function() {
-                res.end();
                 console.log(companies);
                 var csv = babyParse.unparse(companies);
                 var date = new Date();
-                fs.writeFileSync(date.getTime()+"-output.csv", csv);
+                var fileName = date.getTime()+"-output.csv";
+                fs.writeFileSync(fileName, csv);
+
+                var data = {
+                    from: 'Stock Compute',
+                    to: email,
+                    subject: 'Your Stock Report is ready',
+                    text: 'You stock report is attached in the email',
+                    attachment: fileName
+                };
+                mailgun.messages().send(data, function (error, body) {
+                    console.log(body);
+                });
+
                 console.timeEnd("process");
             });
         });
