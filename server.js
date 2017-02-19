@@ -415,24 +415,34 @@ function loadStock(symbol, name, industry) {
                 var fileName = date.getTime()+"-output.csv";
                 fs.writeFileSync(fileName, csv);
 
+				var attch = new mailgun.Attachment({
+					data: fs.readFileSync(fileName), 
+					filename: 'Report.csv'
+				});
+
     			var data = {
                     from: 'postmaster@makemyapp.io',
                     to: email,
                     subject: 'Your Stock Report is ready',
                     text: 'You stock report is attached in the email',
-                    attachment: fs.readFileSync(fileName)
+                    attachment:attch
                 };
                 mailgun.messages().send(data, function (error, body) {
                     console.log(body);
                 });
 
 				computeTechnical(fileName, function(outFile) {
+					var attch = new mailgun.Attachment({
+						data: fs.readFileSync(outFile), 
+						filename: 'Technical.csv'
+					});
+
 					var data = {
 							from: 'postmaster@makemyapp.io',
 							to: email,
 							subject: 'Your Technical report is ready',
 							text: 'You stock report is attached in the email',
-							attachment: fs.readFileSync(outFile)
+							attachment: attch
 						};
 						mailgun.messages().send(data, function (error, body) {
 							console.log(body);
