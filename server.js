@@ -409,7 +409,7 @@ function loadStock(symbol, name, industry) {
                 var fileName = date.getTime()+"-output.csv";
                 fs.writeFileSync(fileName, csv);
 
-                var data = {
+    			var data = {
                     from: 'postmaster@makemyapp.io',
                     to: email,
                     subject: 'Your Stock Report is ready',
@@ -420,7 +420,90 @@ function loadStock(symbol, name, industry) {
                     console.log(body);
                 });
 
+				computeTechnical(fileName, function(outFile) {
+					var data = {
+							from: 'postmaster@makemyapp.io',
+							to: email,
+							subject: 'Your Technical report is ready',
+							text: 'You stock report is attached in the email',
+							attachment: fs.readFileSync(outFile)
+						};
+						mailgun.messages().send(data, function (error, body) {
+							console.log(body);
+						});
+				});
+
+            
+
                 console.timeEnd("process");
             });
         });
     }
+
+function computeTechnical(fileName, callback) {
+	//Reading the csv
+fs.readFile(fileName, 'utf8', function(err, file) {
+    var parsed = babyParse.parse(file, { header: true }).data;
+    var results = [];
+    async.each(parsed, function(item, cb) {
+       request({
+           url: config.moneyControlSuggest+item.symbol,
+           method: "GET"
+       }, function(err, response, body) {
+            if(err){ console.log(err); return cb(); }
+            
+            var data = eval(body);
+
+            var temp = data[0].link_src.split("/");
+            var symbol = temp[temp.length - 1];
+            loadAdvancedChart(symbol).then(function(result) {
+                result.name = item.name;
+                result.symbol = item.symbol;
+                
+                results.push(result);
+                
+                return cb();
+            }, function() {
+                return cb();
+            });
+       });
+    }, function() {
+        console.log(results);
+        var csv = babyParse.unparse(results);
+		var outFile = new Date().getTime()+"-techincal.csv";
+        fs.writeFileSync(outFile, csv);
+		callback(null, outFile);
+    });
+});
+
+function loadAdvancedChart(symbol) {
+    var defer = q.defer();
+    var url = "http://www.moneycontrol.com/stock-charts/shriramcityunionfinance/charts/"+symbol;
+    console.log(url);
+    request({
+        url: url,
+        method: "GET"
+    }, function(err, response, body) {
+        if(err) { console.log(err); return defer.reject(err); }
+        
+    console.log(url);
+        var $ = cheerio.load(body);
+        
+        var currentStockPrice = parseFloat($("#Bse_Prc_tick > strong").text());
+        var movingAveragePrice = parseFloat($("table.table5 tr:nth-child(5) td:nth-child(3)").text());
+        var changePercentage = ((currentStockPrice - movingAveragePrice)/movingAveragePrice)*100;
+        
+        return defer.resolve({
+            currentStockPrice: currentStockPrice,
+            movingAveragePrice: movingAveragePrice,
+            changePercentage: changePercentage
+        });
+    });
+    
+    return defer.promise;
+}
+
+function suggest(data) {
+	return data;
+}
+}
