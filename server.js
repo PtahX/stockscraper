@@ -3,10 +3,10 @@ var app = express();
 var contentDisposition = require('content-disposition');
 app.listen(process.env.PORT  || 4000);
 
-var api_key = process.env.MAILGUN_API_KEY || 'key-c6980bbd5dcb17840cdcd4ec7fbb7de0';
-var domain = process.env.MAILGUN_DOMAIN ||  'app59ec30de45c64f77a21aa73713ec2399.mailgun.org';
+var api_key = 'key-b943e8e60fee22b14bbb92b2a401d7af';
+var domain = 'makemyapp.io';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
- 
+
 
 app.get('/', function(req, res) {
     res.send('<form action="/compute" method="get"> Email:<input type="email" name="email" /> <input type="submit" /></form>');
@@ -410,7 +410,7 @@ function loadStock(symbol, name, industry) {
                 fs.writeFileSync(fileName, csv);
 
                 var data = {
-                    from: 'Stock Compute',
+                    from: 'postmaster@makemyapp.io',
                     to: email,
                     subject: 'Your Stock Report is ready',
                     text: 'You stock report is attached in the email',
